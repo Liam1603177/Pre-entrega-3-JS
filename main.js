@@ -23,10 +23,15 @@ const mostrarListaAnimes = (animesFiltrados = animes) => {
         const animeElement = document.createElement('div');
         animeElement.className = 'anime-item';
         animeElement.innerHTML = `
-            <h3>${anime.nombre}</h3>
-            <p>${anime.descripcion}</p>
-            <p>Episodios: ${anime.episodios}</p>
-            <button class="add-to-playlist" data-id="${anime.id}">Agregar a la lista</button>
+            <div class="anime-content">
+                <img src="${anime.imagen}" alt="${anime.nombre}" class="anime-image" onerror="this.src='images/placeholder.jpg'">
+                <div class="anime-info">
+                    <h3>${anime.nombre}</h3>
+                    <p>${anime.descripcion}</p>
+                    <p>Episodios: ${anime.episodios}</p>
+                    <button class="add-to-playlist" data-id="${anime.id}">Agregar a la lista</button>
+                </div>
+            </div>
         `;
         listaAnimes.appendChild(animeElement);
     });
