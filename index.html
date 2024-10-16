@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Anime y Lista de Reproducción</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>AnimeCODE</h1>
+        <p>¡Aquí lo viste primero! Mantente al día con las últimas noticias de anime y manga directamente desde Japón</p>
+    </header>
+    
+    <main>
+        <section id="search-section">
+            <input type="text" id="search-input" placeholder="Buscar anime..." aria-label="Buscar anime">
+            <button id="search-button">Buscar</button>
+        </section>
+        
+        <section id="results-section">
+            <h2>Resultados de la búsqueda</h2>
+            <div id="anime-list"></div>
+        </section>
+        
+        <section id="playlist-section">
+            <h2>Lista de Reproducción</h2>
+            <div id="playlist"></div>
+        </section>
+    </main>
+    
+    <script src="animes.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
