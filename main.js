@@ -1,5 +1,6 @@
 // Inicialización de variables globales
 let listaReproduccion = [];
+let animes = [];
 
 // Función para cargar la lista de reproducción desde localStorage
 const cargarListaReproduccion = () => {
@@ -12,6 +13,29 @@ const cargarListaReproduccion = () => {
 // Función para guardar la lista de reproducción en localStorage
 const guardarListaReproduccion = () => {
     localStorage.setItem('listaReproduccion', JSON.stringify(listaReproduccion));
+};
+
+// Función para cargar los animes desde una API externa
+const cargarAnimes = async () => {
+    try {
+        const response = await fetch('https://api.jikan.moe/v4/top/anime?limit=20');
+        const data = await response.json();
+        animes = data.data.map(anime => ({
+            id: anime.mal_id,
+            nombre: anime.title,
+            descripcion: anime.synopsis,
+            episodios: anime.episodes,
+            imagen: anime.images.jpg.image_url
+        }));
+        mostrarListaAnimes();
+    } catch (error) {
+        console.error('Error al cargar los animes:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudieron cargar los animes. Por favor, intenta de nuevo más tarde.',
+        });
+    }
 };
 
 // Función para mostrar la lista de animes en el DOM
@@ -117,7 +141,7 @@ const eliminarDeLista = (id) => {
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     cargarListaReproduccion();
-    mostrarListaAnimes();
+    cargarAnimes();
     mostrarListaReproduccion();
 
     // Evento para el botón de búsqueda
